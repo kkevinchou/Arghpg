@@ -1,33 +1,51 @@
 package arghpg;
 
+import kcomponent.EntityManager;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+
+import arghpg.entity.DerivedEntity;
+import arghpg.system.GraphicsSystem;
+import arghpg.system.InputSystem;
+import arghpg.system.PhysicsSystem;
 
 public class Main extends BasicGame {
 	private static final String TITLE = "Arghpg";
 	private static int WIDTH = 800;
 	private static int HEIGHT = 600;
 	private static int FPS = 60;
+	
+	PhysicsSystem physicsSystem;
+	GraphicsSystem graphicsSystem;
+	InputSystem inputSystem;
+	EntityManager manager;
 
 	@Override
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		// TODO Auto-generated method stub
+	public void init(GameContainer container) throws SlickException {
+		physicsSystem = new PhysicsSystem();
+		graphicsSystem = new GraphicsSystem();
+		inputSystem = new InputSystem();
 		
+		manager = EntityManager.getInstance();
+		manager.register(new DerivedEntity(100, 100, 100, 100));
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
-		
+	public void render(GameContainer container, Graphics graphics) throws SlickException {
+		graphicsSystem.update(graphics);
 	}
 
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
-		// TODO Auto-generated method stub
+	public void update(GameContainer container, int deltaMillis) throws SlickException {
+		float deltaSeconds = (float)deltaMillis / 1000;
 		
+		inputSystem.update(container.getInput());
+		physicsSystem.update(deltaSeconds);
 	}
 	
 	public Main(String title) {

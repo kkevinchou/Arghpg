@@ -3,28 +3,28 @@ package arghpg.component;
 import kcomponent.Component;
 
 public class VelocityComponent extends Component {
-	private int xSpeed;
-	private int ySpeed;
+	private float xSpeed;
+	private float ySpeed;
 	
-	public VelocityComponent(int x, int y) {
+	public VelocityComponent(float x, float y) {
 		super(ComponentType.VELOCITY);
 		this.xSpeed = x;
 		this.ySpeed = y;
 	}
 
-	public int getXSpeed() {
+	public float getXSpeed() {
 		return xSpeed;
 	}
 
-	public void setXSpeed(int xSpeed) {
+	public void setXSpeed(float xSpeed) {
 		this.xSpeed = xSpeed;
 	}
 
-	public int getYSpeed() {
+	public float getYSpeed() {
 		return ySpeed;
 	}
 
-	public void setYSpeed(int ySpeed) {
+	public void setYSpeed(float ySpeed) {
 		this.ySpeed = ySpeed;
 	}
 }

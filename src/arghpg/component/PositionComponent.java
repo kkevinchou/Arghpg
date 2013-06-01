@@ -3,28 +3,33 @@ package arghpg.component;
 import kcomponent.Component;
 
 public class PositionComponent extends Component {
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 
-	public PositionComponent(int x, int y) {
+	public PositionComponent(float x, float y) {
 		super(ComponentType.POSITION);
 		this.x = x;
 		this.y = y;
 	}
+	
+	public void integrateWithVelocity(float xDelta, float yDelta) {
+		this.x += xDelta;
+		this.y += yDelta;
+	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	
